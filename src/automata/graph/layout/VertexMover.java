@@ -92,7 +92,7 @@ public class VertexMover extends LayoutAlgorithm {
 		//Check whether to fill the screen first, because other commands will call the other
 		//shiftOntoScreen method.
 		if (command == FILL) {
-			shiftOntoScreen(graph, size, vertexDim, false);
+			shiftOntoScreen(graph, size, vertexDim, vertexBuffer, true);
 			return;
 		}
 		
@@ -144,6 +144,6 @@ public class VertexMover extends LayoutAlgorithm {
 			polarToCartesian(graph, vertices);
 		}
 		//Finally, shift onto the screen
-		shiftOntoScreen(graph, size, vertexDim, true);
+		shiftOntoScreen(graph, size, vertexDim, vertexBuffer, true);
 	}
 }

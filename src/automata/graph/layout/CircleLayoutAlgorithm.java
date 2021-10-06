@@ -82,8 +82,8 @@ public class CircleLayoutAlgorithm extends LayoutAlgorithm {
 		
 		for (int i=0; i<boxes.size(); i++)
 			((Box) boxes.get(i)).layoutInCircleAndPack();
-				
-		shiftOntoScreen(graph, size, vertexDim, true);
+
+		shiftOntoScreen(graph, size, vertexDim, vertexBuffer, true);
 	}
 		
 	/**

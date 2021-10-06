@@ -373,6 +373,8 @@ public class MenuBarCreator {
 			viewMenu.add(subMenu);
 			viewMenu.add(new LayoutAlgorithmAction("Two Circle", automaton, 
 					environment, LayoutAlgorithmFactory.TWO_CIRCLE));
+			viewMenu.add(new LayoutAlgorithmAction("Force-Directed", automaton,
+					environment, LayoutAlgorithmFactory.FORCE_DIRECTED));
 			menu.add(viewMenu);
 //			menu.add(new StateColorSelector(automaton,environment,menu));
 		}
