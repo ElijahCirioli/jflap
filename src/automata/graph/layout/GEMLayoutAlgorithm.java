@@ -183,7 +183,7 @@ public class GEMLayoutAlgorithm extends LayoutAlgorithm {
 		}
 
 		//Finally, shift all points onto the screen.
-		shiftOntoScreen(graph, size, vertexDim, vertexBuffer, true);
+		shiftOntoScreen(graph, size, vertexDim, true);
 	}
 
 	private static final Random RANDOM = new Random();

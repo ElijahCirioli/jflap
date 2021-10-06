@@ -130,7 +130,7 @@ public class TreeLayoutAlgorithm extends LayoutAlgorithm {
 			}			
 		}
 		firstLevel.layout(0);
-		shiftOntoScreen(graph, size, vertexDim, vertexBuffer, true);
+		shiftOntoScreen(graph, size, vertexDim, true);
 	}
 	
 	/**
