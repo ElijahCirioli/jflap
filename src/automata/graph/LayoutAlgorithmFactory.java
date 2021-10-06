@@ -38,7 +38,7 @@ public class LayoutAlgorithmFactory {
 	 * sure all integers from 0 to <i>NUM_ALGORITHMS</i>-1 are numerical identifiers for 
 	 * <code>LayoutAlgorithms</code>. 
 	 */
-	private static final int NUM_ALGORITHMS = 7;
+	private static final int NUM_ALGORITHMS = 8;
 	/**
 	 * Numerical identifier for choosing a random </code>LayoutAlgorithm</code> instance.
 	 */
@@ -71,6 +71,8 @@ public class LayoutAlgorithmFactory {
 	 * Numerical identifier for a <code>TwoCircleLayoutAlgorithm</code> instance.
 	 */
 	public static final int TWO_CIRCLE = 6;
+
+	public static final int FORCE_DIRECTED = 7;
 
 	/**
 	 * Returns a random <code>LayoutAlgorithm</code> among those defined.  Should not be mistaken for an
@@ -113,6 +115,7 @@ public class LayoutAlgorithmFactory {
 			case TREE_DEGREE: return new TreeLayoutAlgorithm(false);
 			case TREE_HIERARCHY: return new TreeLayoutAlgorithm(true);
 			case TWO_CIRCLE: return new TwoCircleLayoutAlgorithm();
+			case FORCE_DIRECTED: return new ForceDirectedLayoutAlgorithm();
 			case VertexMover.NEGATIVE_SLOPE_DIAGONAL: return new VertexMover(VertexMover.NEGATIVE_SLOPE_DIAGONAL);
 			case VertexMover.POSITIVE_SLOPE_DIAGONAL: return new VertexMover(VertexMover.POSITIVE_SLOPE_DIAGONAL);
 			case VertexMover.ROTATE: return new VertexMover(VertexMover.ROTATE);
@@ -142,6 +145,7 @@ public class LayoutAlgorithmFactory {
 			case TREE_DEGREE: return new TreeLayoutAlgorithm(pSize, vDim, vBuffer, false);
 			case TREE_HIERARCHY: return new TreeLayoutAlgorithm(pSize, vDim, vBuffer, true);
 			case TWO_CIRCLE: return new TwoCircleLayoutAlgorithm(pSize, vDim, vBuffer);
+			case FORCE_DIRECTED: return new ForceDirectedLayoutAlgorithm(pSize, vDim, vBuffer);
 			case VertexMover.NEGATIVE_SLOPE_DIAGONAL: 
 					return new VertexMover(pSize, vDim, vBuffer, VertexMover.NEGATIVE_SLOPE_DIAGONAL);
 			case VertexMover.POSITIVE_SLOPE_DIAGONAL: 

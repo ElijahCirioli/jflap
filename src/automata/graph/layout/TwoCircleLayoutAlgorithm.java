@@ -122,7 +122,7 @@ public class TwoCircleLayoutAlgorithm extends LayoutAlgorithm {
 		
 		//Finally, adjust the points so that they can be presented on the screen.
 		polarToCartesian(graph, vertices);
-		shiftOntoScreen(graph, size, vertexDim, true);
+		shiftOntoScreen(graph, size, vertexDim, vertexBuffer, true);
 	}
 	
 	/**

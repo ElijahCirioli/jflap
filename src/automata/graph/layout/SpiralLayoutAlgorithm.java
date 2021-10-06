@@ -104,6 +104,6 @@ public class SpiralLayoutAlgorithm extends LayoutAlgorithm {
 		
 		// Finally, convert the points to Cartesian points, and make sure they all fit onto the screen
 		polarToCartesian(graph, vertices);
-		shiftOntoScreen(graph, size, vertexDim, true);
+		shiftOntoScreen(graph, size, vertexDim, vertexBuffer, true);
 	}
 }

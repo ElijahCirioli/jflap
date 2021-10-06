@@ -20,6 +20,8 @@
 
 package automata.graph;
 
+import gui.tree.DefaultNodeDrawer;
+
 import java.awt.geom.Point2D;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -96,14 +98,14 @@ public abstract class LayoutAlgorithm {
 	 *            If true, will only fill the screen with a graph if the points are outside
 	 *            the given size.
 	 */
-	public static void shiftOntoScreen(Graph graph, Dimension size, Dimension buffer, boolean scaleOnlyOverflow) 
+	public static void shiftOntoScreen(Graph graph, Dimension size, Dimension vertexSize, double buffer, boolean scaleOnlyOverflow)
 	{
 		if (size==null || size.getHeight() == 0 || size.getWidth() == 0)
 			return;
 		
 		Object[] vertices = graph.vertices();
 		double currentX, currentY, minX, minY, maxX, maxY, heightRatio, widthRatio;
-		
+
 		//First, find the extreme values of x & y
 		minX=Integer.MAX_VALUE;   minY=Integer.MAX_VALUE;   
 		maxX=Integer.MIN_VALUE;   maxY=Integer.MIN_VALUE;
@@ -119,7 +121,7 @@ public abstract class LayoutAlgorithm {
 			if (currentY > maxY)
 				maxY = currentY;
 		}
-		
+
 		//Then, set all points so that their coordinates range from (0...maxX-minX, 0...maxY-minY)
 		for (int i=0; i<vertices.length; i++) 
 			graph.moveVertex(vertices[i], new Point2D.Double(
@@ -127,8 +129,8 @@ public abstract class LayoutAlgorithm {
 				  graph.pointForVertex(vertices[i]).getY() - minY));					
 		
 		//Calculate whether the points go off the defined screen minus buffer space, and adjust
-		widthRatio = (maxX - minX) / (size.getWidth() - 2 * buffer.getWidth());
-		heightRatio = (maxY - minY) / (size.getHeight() - 2 * buffer.getHeight());				
+		widthRatio = (maxX - minX) / (size.getWidth() - 2 * buffer);
+		heightRatio = (maxY - minY) / (size.getHeight() - 2 * buffer);
 		if (widthRatio > 1.0 || !scaleOnlyOverflow) {
 			for (int i=0; i<vertices.length; i++)
 				graph.moveVertex(vertices[i], new Point2D.Double(					  
@@ -145,8 +147,8 @@ public abstract class LayoutAlgorithm {
 		//Finally, shift the points right and down the respective buffer values
 		for (int i=0; i<vertices.length; i++) 
 			graph.moveVertex(vertices[i], new Point2D.Double(
-				  graph.pointForVertex(vertices[i]).getX() + buffer.getWidth(),
-				  graph.pointForVertex(vertices[i]).getY() + buffer.getHeight()));
+				  graph.pointForVertex(vertices[i]).getX() + buffer - vertexSize.getHeight() / 2,
+				  graph.pointForVertex(vertices[i]).getY() + buffer - vertexSize.getWidth() / 2));
 	}
 	
 	/**

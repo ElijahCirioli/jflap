@@ -95,7 +95,7 @@ public class RandomLayoutAlgorithm extends LayoutAlgorithm {
 		//making sure all points are on the screen.		  
 		for (int i=0; i<points.size(); i++)
 			graph.moveVertex(chain.get(i), (Point2D) points.get(i));
-		shiftOntoScreen(graph, size, vertexDim, true);		
+		shiftOntoScreen(graph, size, vertexDim, vertexBuffer, true);
 	}
 	
 	/**
