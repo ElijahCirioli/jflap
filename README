@@ -1,3 +1,10 @@
+Elijah's comments:
+--------------------------------------------------------------------
+I thought the options to automatically arrange the layout of the graphs were very bad so I implemented one more that uses a physics-based approach.
+
+I also fixed a small bug in Layout.shiftOntoScreen() which was causing vertices to just slightly clip off, leading to unwanted scrollbars.
+--------------------------------------------------------------------
+
 Thanks for your interest in JFLAP!
 
 We are distributing both the JFLAP source and binary under the JFLAP 7.0 license, available in the file LICENSE.
