@@ -35,9 +35,7 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
 import automata.Automaton;
@@ -86,6 +84,10 @@ public class OpenAction extends RestrictedAction {
 		fileChooser.setCurrentDirectory(tempFile);
 		fileChooser.rescanCurrentDirectory();
 		fileChooser.setMultiSelectionEnabled(true);
+
+		Action details = fileChooser.getActionMap().get("viewTypeDetails");
+		details.actionPerformed(null);
+
 		Codec[] codecs = null;
 		codecs = makeFilters();
 
