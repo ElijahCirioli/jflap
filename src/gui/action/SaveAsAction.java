@@ -26,6 +26,7 @@ import gui.environment.Universe;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.Serializable;
 
 import javax.swing.JFileChooser;
@@ -61,6 +62,11 @@ public class SaveAsAction extends RestrictedAction {
 	 *            the action event
 	 */
 	public void actionPerformed(ActionEvent event) {
+		try {
+			Universe.CHOOSER.setCurrentDirectory(new File((new File(".").getCanonicalPath())));
+		} catch(Exception e) {
+			System.out.println(e);
+		}
 		Universe.frameForEnvironment(environment).save(true);
 	}
 
