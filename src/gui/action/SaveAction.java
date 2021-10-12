@@ -59,10 +59,15 @@ public class SaveAction extends SaveAsAction {
 	 *            the action event
 	 */
 	public void actionPerformed(ActionEvent event) {
-		try {
-			Universe.CHOOSER.setCurrentDirectory(new File((new File(".").getCanonicalPath())));
-		} catch(Exception e) {
-			System.out.println(e);
+		if (!userChosenPath) {
+			try {
+				File tempFile = Universe.CHOOSER.getCurrentDirectory();
+				Universe.CHOOSER.setCurrentDirectory(tempFile.getParentFile());
+				Universe.CHOOSER.setCurrentDirectory(tempFile);
+				userChosenPath = true;
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		}
 		Universe.frameForEnvironment(environment).save(false);
 	}

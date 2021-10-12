@@ -40,6 +40,8 @@ import javax.swing.KeyStroke;
  */
 
 public class SaveAsAction extends RestrictedAction {
+	protected static boolean userChosenPath = false;
+
 	/**
 	 * Instantiates a new <CODE>SaveAction</CODE>.
 	 * 
@@ -62,10 +64,15 @@ public class SaveAsAction extends RestrictedAction {
 	 *            the action event
 	 */
 	public void actionPerformed(ActionEvent event) {
-		try {
-			Universe.CHOOSER.setCurrentDirectory(new File((new File(".").getCanonicalPath())));
-		} catch(Exception e) {
-			System.out.println(e);
+		if (!userChosenPath) {
+			try {
+				File tempFile = Universe.CHOOSER.getCurrentDirectory();
+				Universe.CHOOSER.setCurrentDirectory(tempFile.getParentFile());
+				Universe.CHOOSER.setCurrentDirectory(tempFile);
+				userChosenPath = true;
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		}
 		Universe.frameForEnvironment(environment).save(true);
 	}
