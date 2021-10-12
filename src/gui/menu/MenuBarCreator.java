@@ -496,7 +496,12 @@ public class MenuBarCreator {
 		if (AddTrapStateToDFAAction.isApplicable(object))
 			addItem(menu, new AddTrapStateToDFAAction(
 					(gui.environment.AutomatonEnvironment) environment));
-			
+
+		if (AutomatonAction.isApplicable(object)) {
+			Automaton automaton = (Automaton) object;
+			addItem(menu, new RemoveUnnecessaryStatesAction("Remove Unnecessary States", automaton, environment));
+		}
+
 		return menu;
 	}
 	

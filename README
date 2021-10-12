@@ -1,8 +1,14 @@
 Elijah's comments:
 --------------------------------------------------------------------
-I thought the options to automatically arrange the layout of the graphs were very bad so I implemented one more that uses a physics-based approach.
+I've made some small changes to add features I wanted to see. I probably won't do much more.
 
-I also fixed a small bug in Layout.shiftOntoScreen() which was causing vertices to just slightly clip off, leading to unwanted scrollbars.
+    - Added a force-directed layout algorithm for graphs that uses a simple physics simulation.
+    - Fixed a small bug in Layout.shiftOntoScreen() which was causing vertices to just slightly clip off, leading to unwanted scrollbars.
+    - Added color options for vertices.
+    - Changed default save file directory.
+    - Changed file open screen to remove horizontal scrollbar.
+    - Added a tool to remove unnecessary states created as a result of converting from regular expressions.
+
 --------------------------------------------------------------------
 
 Thanks for your interest in JFLAP!
