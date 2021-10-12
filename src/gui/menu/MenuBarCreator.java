@@ -22,6 +22,7 @@ package gui.menu;
 
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import java.io.File;
@@ -337,6 +338,14 @@ public class MenuBarCreator {
 			
 			
 			JMenu viewMenu, subMenu;
+			viewMenu = new JMenu("Vertex Color");
+			viewMenu.add(new VertexColorAction("Yellow", automaton, new Color(255, 255, 150)));
+			viewMenu.add(new VertexColorAction("Blue", automaton, new Color(115, 180, 255)));
+			viewMenu.add(new VertexColorAction("Green",  automaton, new Color(107, 255, 144)));
+			viewMenu.add(new VertexColorAction("Red",  automaton, new Color(255, 105, 82)));
+			viewMenu.add(new VertexColorAction("Black",  automaton, new Color(43, 43, 43),new Color(200, 200, 200)));
+			menu.add(viewMenu);
+
 			viewMenu = new JMenu("Move Vertices");
 			subMenu = new JMenu("Reflect Across Line...");
 			subMenu.add(new LayoutAlgorithmAction("Horizontal Line Through Center", automaton, 

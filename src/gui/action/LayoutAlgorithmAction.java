@@ -90,6 +90,7 @@ public class LayoutAlgorithmAction extends AutomatonAction {
 				(int)environment.getSize().getHeight() - (int)assumedUsedSpace.getHeight()), 
 				new Dimension(30, 30), vertexBuffer);
 		layout.layout(graph, null);
+		layout.layout(graph, null);
 		graph.moveAutomatonStates();
 	}
 }

@@ -116,7 +116,7 @@ public class StateDrawer {
 		// Draw the basic background of the state.
 		drawBackground(g, state, point, color);
 		// What about the text label?
-		g.setColor(Color.black);
+		g.setColor(SECONDARY_STATE_COLOR);
 
 		int dx = ((int) g.getFontMetrics().getStringBounds(state.getName(), g)
 				.getWidth()) >> 1;
@@ -253,7 +253,9 @@ public class StateDrawer {
 	public static final int STATE_RADIUS = 20;
 
 	/** The base color for states. */
-	public static final Color STATE_COLOR = new Color(255, 255, 150);
+	public static Color STATE_COLOR = new Color(255, 255, 150);
+
+	public static Color SECONDARY_STATE_COLOR = new Color(0,0,0);
 
 	/** The label padding for states. */
 	public static final int STATE_LABEL_PAD = 3;
