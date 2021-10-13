@@ -69,7 +69,7 @@ public class RemoveUnnecessaryStatesAction extends AutomatonAction {
             if (outTransitions.length == 0 && inTransitions.length == 0) {
                 /* this state is floating */
                 automaton.removeState(s);
-            } else if (outTransitions.length == 1) {
+            } else if (outTransitions.length == 1 && !automaton.isFinalState(s) && !automaton.isInitialState(s)) {
                 FSATransition out = (FSATransition) outTransitions[0];
                 if (out.getLabel().equals("")) {
                     /* the state only has one place to go and it's a lambda */
