@@ -64,6 +64,20 @@ public class ForceDirectedLayoutAlgorithm extends LayoutAlgorithm {
             }
         }
 
+        /* add fake connections if the graph is disconnected */
+        Object firstVertex = vertices.get(0);
+        Set<Object> connections = getConnected(firstVertex);
+        if (vertices.size() != connections.size()) {
+            for (Object v : vertices) {
+                /* if this vertex is disconnected from the start */
+                if (!connections.contains(v)) {
+                    /* add it to the first vertex's neighborhood */
+                    allNeighborhoods.get(firstVertex).add(v);
+                    allNeighborhoods.get(v).add(firstVertex);
+                }
+            }
+        }
+
         /* define important variables */
         double width =  size.getWidth() - 2 * vertexBuffer;
         double height =  size.getHeight() - 2 * vertexBuffer;
@@ -84,5 +98,25 @@ public class ForceDirectedLayoutAlgorithm extends LayoutAlgorithm {
             graph.moveVertex(v.vertex, v.position);
         }
         shiftOntoScreen(graph, size, vertexDim, vertexBuffer, true);
+    }
+
+    private Set<Object> getConnected(Object startingVertex) {
+        HashSet<Object> visited = new HashSet<>();
+        LinkedList<Object> queue = new LinkedList<>();
+        visited.add(startingVertex);
+        queue.add(startingVertex);
+
+        while (queue.size() > 0) {
+            Object curr = queue.remove();
+            Set<Object> neighborhood = graph.adjacent(curr);
+            for (Object v : neighborhood) {
+               if (!visited.contains(v)) {
+                   visited.add(v);
+                   queue.addLast(v);
+               }
+            }
+        }
+
+        return visited;
     }
 }
