@@ -1,6 +1,7 @@
 Elijah's comments:
 --------------------------------------------------------------------
 I've made some small changes to add features I wanted to see. I probably won't do much more.
+The license says I need to provide a way for you to contact me. You can do that [here.](https://elijahcirioli.com/contact/) 
 
     - Added a force-directed layout algorithm for graphs that uses a simple physics simulation.
     - Fixed a small bug in Layout.shiftOntoScreen() which was causing unwanted scrollbars.
@@ -9,9 +10,8 @@ I've made some small changes to add features I wanted to see. I probably won't d
     - Changed file open screen to remove horizontal scrollbar.
     - Added a tool to remove unnecessary states created as a result of converting from regular expressions.
 
-The license says I need to provide a way for you to contact me. You can do that [here.](elijahcirioli.com/contact/) 
+Susan's message:
 --------------------------------------------------------------------
-
 Thanks for your interest in JFLAP!
 
 We are distributing both the JFLAP source and binary under the JFLAP 7.0 license, available in the file LICENSE.
