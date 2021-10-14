@@ -343,7 +343,7 @@ public class MenuBarCreator {
 			viewMenu.add(new VertexColorAction("Blue", automaton, new Color(115, 180, 255), new Color(89, 238, 255)));
 			viewMenu.add(new VertexColorAction("Green",  automaton, new Color(107, 255, 144), new Color(79, 255, 238)));
 			viewMenu.add(new VertexColorAction("Red",  automaton, new Color(255, 105, 82), new Color(255, 169, 64)));
-			viewMenu.add(new VertexColorAction("Black",  automaton, new Color(43, 43, 43), new Color(43, 43, 43), new Color(124, 137, 153)));
+			viewMenu.add(new VertexColorAction("Black",  automaton, new Color(43, 43, 43), new Color(90, 100, 112), new Color(196, 196, 196)));
 			menu.add(viewMenu);
 
 			viewMenu = new JMenu("Move Vertices");

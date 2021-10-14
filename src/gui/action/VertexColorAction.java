@@ -57,7 +57,7 @@ public class VertexColorAction extends AutomatonAction {
         automaton = a;
     }
 
-    public VertexColorAction(String string, Automaton a, Color pc, Color sc, Color selC) {
+    public VertexColorAction(String string, Automaton a, Color pc, Color selC, Color sc) {
         super(string, null);
         primaryColor = pc;
         secondaryColor = sc;
