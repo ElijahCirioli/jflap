@@ -9,6 +9,9 @@ The license says I need to provide a way for you to contact me. You can do that 
     - Changed default save file directory.
     - Changed file open screen to remove horizontal scrollbar.
     - Added a tool to remove unnecessary states created as a result of converting from regular expressions.
+    - Added a tool to highlight cycles in an automaton.
+    - Added a tool that will tell you if a graph is strongly or weakly connected.
+    
 
 Susan's message:
 --------------------------------------------------------------------
