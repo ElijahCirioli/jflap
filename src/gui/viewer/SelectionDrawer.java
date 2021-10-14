@@ -76,7 +76,7 @@ public class SelectionDrawer extends AutomatonDrawer {
 	public void drawState(Graphics g, State state) {
 		if (selected.contains(state)) {
 			getStateDrawer().drawState(g, getAutomaton(), state,
-					state.getPoint(), SELECTED_COLOR);
+					state.getPoint(), StateDrawer.STATE_SELECTION_COLOR);
 			if (doesDrawStateLabels())
 				getStateDrawer().drawStateLabel(g, state, state.getPoint(),
 						StateDrawer.STATE_COLOR);
@@ -300,10 +300,6 @@ public class SelectionDrawer extends AutomatonDrawer {
 
 	/** The set of selected states, and the set of selected transitions. */
 	private Set selected = new HashSet(), selectedTransitions = new HashSet();
-
-	/** The color to draw selected states in. */
-	protected static final Color SELECTED_COLOR = StateDrawer.STATE_COLOR
-			.darker().darker();
 
 	/** This set of listeners. */
 	private Set listeners = new HashSet();

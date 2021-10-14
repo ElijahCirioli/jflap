@@ -36,6 +36,7 @@ import java.awt.event.ActionEvent;
 public class VertexColorAction extends AutomatonAction {
     private Color primaryColor;
     private Color secondaryColor;
+    private Color selectedColor;
     private Automaton automaton;
 
     /**
@@ -43,26 +44,31 @@ public class VertexColorAction extends AutomatonAction {
      *
      * @param string
      *            a string description
-     * @param color
+     * @param a
+     *            The automaton to color
+     * @param c
      *            the color to change the vertices to
      */
-    public VertexColorAction(String string, Automaton a, Color c) {
+    public VertexColorAction(String string, Automaton a, Color pc, Color selC) {
         super(string, null);
-        primaryColor = c;
+        primaryColor = pc;
         secondaryColor = new Color(0, 0, 0); /* default secondary color to black */
+        selectedColor = selC;
         automaton = a;
     }
 
-    public VertexColorAction(String string, Automaton a, Color pc, Color sc) {
+    public VertexColorAction(String string, Automaton a, Color pc, Color sc, Color selC) {
         super(string, null);
         primaryColor = pc;
         secondaryColor = sc;
+        selectedColor = selC;
         automaton = a;
     }
 
     public void actionPerformed(ActionEvent e) {
         StateDrawer.STATE_COLOR = primaryColor;
         StateDrawer.SECONDARY_STATE_COLOR = secondaryColor;
+        StateDrawer.STATE_SELECTION_COLOR = selectedColor;
         /* a hacky workaround to force a redraw */
         AutomatonGraph graph = LayoutAlgorithmFactory.getAutomatonGraph(0, automaton);
         graph.moveAutomatonStates();

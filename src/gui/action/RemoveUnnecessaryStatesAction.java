@@ -48,7 +48,7 @@ public class RemoveUnnecessaryStatesAction extends AutomatonAction {
      * @param s
      *     the title of this action.
      * @param a
-     *     the automaton this action will move.
+     *     the automaton for which the states will be removed
      * @param e
      *     the environment this automaton is in.
      */

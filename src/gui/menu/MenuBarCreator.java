@@ -339,11 +339,11 @@ public class MenuBarCreator {
 			
 			JMenu viewMenu, subMenu;
 			viewMenu = new JMenu("Vertex Color");
-			viewMenu.add(new VertexColorAction("Yellow", automaton, new Color(255, 255, 150)));
-			viewMenu.add(new VertexColorAction("Blue", automaton, new Color(115, 180, 255)));
-			viewMenu.add(new VertexColorAction("Green",  automaton, new Color(107, 255, 144)));
-			viewMenu.add(new VertexColorAction("Red",  automaton, new Color(255, 105, 82)));
-			viewMenu.add(new VertexColorAction("Black",  automaton, new Color(43, 43, 43),new Color(200, 200, 200)));
+			viewMenu.add(new VertexColorAction("Yellow", automaton, new Color(255, 255, 150), new Color(252, 170, 76)));
+			viewMenu.add(new VertexColorAction("Blue", automaton, new Color(115, 180, 255), new Color(89, 238, 255)));
+			viewMenu.add(new VertexColorAction("Green",  automaton, new Color(107, 255, 144), new Color(79, 255, 238)));
+			viewMenu.add(new VertexColorAction("Red",  automaton, new Color(255, 105, 82), new Color(255, 169, 64)));
+			viewMenu.add(new VertexColorAction("Black",  automaton, new Color(43, 43, 43), new Color(43, 43, 43), new Color(124, 137, 153)));
 			menu.add(viewMenu);
 
 			viewMenu = new JMenu("Move Vertices");
@@ -375,9 +375,9 @@ public class MenuBarCreator {
 			viewMenu.add(new LayoutAlgorithmAction("Spiral", automaton, 
 					environment, LayoutAlgorithmFactory.SPIRAL));
 			subMenu = new JMenu("Tree");
-			subMenu.add(new LayoutAlgorithmAction("Degree", automaton, 
+			subMenu.add(new LayoutAlgorithmAction("Degree", automaton,
 					environment, LayoutAlgorithmFactory.TREE_DEGREE));
-			subMenu.add(new LayoutAlgorithmAction("Hierarchy", automaton, 
+			subMenu.add(new LayoutAlgorithmAction("Hierarchy", automaton,
 					environment, LayoutAlgorithmFactory.TREE_HIERARCHY));
 			viewMenu.add(subMenu);
 			viewMenu.add(new LayoutAlgorithmAction("Two Circle", automaton, 
@@ -430,6 +430,17 @@ public class MenuBarCreator {
 
 		if (GrammarTypeTestAction.isApplicable(object))
 			addItem(menu, new GrammarTypeTestAction ((gui.environment.GrammarEnvironment) environment));
+
+		if (AutomatonAction.isApplicable(object)) {
+			Automaton automaton = (Automaton) object;
+			addItem(menu,new CycleHighlightAction("Highlight Cycles", automaton, environment));
+
+			JMenu subMenu = new JMenu("Test Connectivity");
+			addItem(subMenu, new TestWeakConnectivityAction("Weakly Connected", automaton, environment));
+			addItem(subMenu, new TestStrongConnectivityAction("Strongly Connected", automaton, environment));
+			menu.add(subMenu);
+	}
+
 		return menu;
 	}
 
