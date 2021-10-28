@@ -11,6 +11,7 @@ The license says I need to provide a way for you to contact me. You can do that 
     - Added a tool to remove unnecessary states created as a result of converting from regular expressions.
     - Added a tool to highlight cycles in an automaton.
     - Added a tool that will tell you if a graph is strongly or weakly connected.
+    - Added a tool for creating the cross product of two finite automata
     
 
 Susan's message:
