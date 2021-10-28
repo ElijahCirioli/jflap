@@ -20,6 +20,8 @@
 package gui.action;
 
 import java.awt.event.ActionEvent;
+import java.util.HashSet;
+import java.util.LinkedList;
 
 import automata.State;
 import automata.Transition;
@@ -59,10 +61,11 @@ public class RemoveUnnecessaryStatesAction extends AutomatonAction {
     }
 
     /**
-     * Remove states that only exist to lambda to one other state
+     * Remove some unnecessary states
      */
     public void actionPerformed(ActionEvent e) {
         State[] states = automaton.getStates();
+        /* remove states that only exist to lambda to one other state */
         for (State s : states) {
             Transition[] outTransitions = automaton.getTransitionsFromState(s);
             Transition[] inTransitions = automaton.getTransitionsToState(s);
@@ -85,6 +88,31 @@ public class RemoveUnnecessaryStatesAction extends AutomatonAction {
                         automaton.addTransition(bypassTransition);
                     }
                     /* remove s */
+                    automaton.removeState(s);
+                }
+            }
+        }
+
+        /* BFS to find unreachable states */
+        if (automaton.getInitialState() != null) {
+            HashSet<State> visited = new HashSet<>();
+            LinkedList<State> queue = new LinkedList<>();
+            queue.add(automaton.getInitialState());
+            visited.add(automaton.getInitialState());
+            while (queue.size() > 0) {
+                State curr = queue.remove();
+                for (Transition t : automaton.getTransitionsFromState(curr)) {
+                    State u = t.getToState();
+                    if (!visited.contains(u)) {
+                        visited.add(u);
+                        queue.addLast(u);
+                    }
+                }
+            }
+            /* remove everything we couldn't reach */
+            states = automaton.getStates();
+            for (State s : states) {
+                if (!visited.contains(s)) {
                     automaton.removeState(s);
                 }
             }

@@ -46,7 +46,7 @@ public class ForceDirectedLayoutAlgorithm extends LayoutAlgorithm {
         if (graph == null || vertices.size() == 0)
             return;
 
-        /* wrap the graph vertices in physics objects and create hashmap of undirected neighborhoods */
+        /* wrap the graph vertices in physics objects and create HashMap of undirected neighborhoods */
         HashMap<Object, HashSet<Object>> allNeighborhoods = new HashMap<>();
         ArrayList<PhysicsVertex> physicsVertices = new ArrayList<>(vertices.size());
         for (Object v : vertices) {

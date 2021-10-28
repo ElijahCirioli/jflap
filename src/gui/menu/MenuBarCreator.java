@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.lang.reflect.*;
 import java.util.jar.*;
 
+import automata.fsa.FSATransition;
 import grammar.Grammar;
 import grammar.TuringChecker;
 import gui.environment.Environment;
@@ -499,6 +500,15 @@ public class MenuBarCreator {
 			addItem(menu, new CombineAutomaton(
 					(gui.environment.AutomatonEnvironment) environment));
 
+		if (FSAAction.isApplicable(object)) {
+			JMenu subMenu = new JMenu("Cross Product");
+			addItem(subMenu, new UnionProductAction((gui.environment.AutomatonEnvironment) environment));
+			addItem(subMenu, new IntersectionProductAction((gui.environment.AutomatonEnvironment) environment));
+			addItem(subMenu, new DifferenceProductAction((gui.environment.AutomatonEnvironment) environment));
+			menu.add(subMenu);
+		}
+
+
 		if (TuringToUnrestrictGrammarAction.isApplicable(object))
 			addItem(menu, new TuringToUnrestrictGrammarAction(
 					(gui.environment.AutomatonEnvironment) environment));
@@ -508,7 +518,7 @@ public class MenuBarCreator {
 			addItem(menu, new AddTrapStateToDFAAction(
 					(gui.environment.AutomatonEnvironment) environment));
 
-		if (AutomatonAction.isApplicable(object)) {
+		if (FSAAction.isApplicable(object)) {
 			Automaton automaton = (Automaton) object;
 			addItem(menu, new RemoveUnnecessaryStatesAction("Remove Unnecessary States", automaton, environment));
 		}
