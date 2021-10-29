@@ -143,20 +143,19 @@ public class CartesianProductAction extends AutomatonAction {
                         /* this combination of transitions represents one transition in the product FSA */
                         String label2 = ((FSATransition) t2).getLabel();
                         /* make sure these transitions have the same label or one is lambda*/
-                        if (label1.equals(label2) || label1.equals("") || label2.equals("")) {
-                            String label = label1;
+                        if (label1.equals(label2) ) {
                             String toId = getProductId(t1.getToState(), t2.getToState());
-                            /* if it's a lambda transition one of the sub-states stays the same */
-                            if (!label1.equals(label2)) {
-                                label = "";
-                                if (label1.equals("")) {
-                                    toId = getProductId(t1.getToState(), s2);
-                                } else {
-                                    toId = getProductId(s1, t2.getToState());
-                                }
-                            }
-                            /* create the actual transition */
-                            Transition productTransition = new FSATransition(combinedStates.get(fromId), combinedStates.get(toId), label);
+                            Transition productTransition = new FSATransition(combinedStates.get(fromId), combinedStates.get(toId), label1);
+                            product.addTransition(productTransition);
+                        }
+                        if (label1.equals("")) {
+                            String toId = getProductId(t1.getToState(), s2);
+                            Transition productTransition = new FSATransition(combinedStates.get(fromId), combinedStates.get(toId), "");
+                            product.addTransition(productTransition);
+                        }
+                        if (label2.equals("")) {
+                            String toId = getProductId(s1, t2.getToState());
+                            Transition productTransition = new FSATransition(combinedStates.get(fromId), combinedStates.get(toId), "");
                             product.addTransition(productTransition);
                         }
                     }
@@ -168,7 +167,7 @@ public class CartesianProductAction extends AutomatonAction {
                 for (Transition t : a1.getTransitionsFromState(s1)) {
                     String label = ((FSATransition) t).getLabel();
                     State s = t.getToState();
-                    if (!allLabels2.contains(label) || label.equals("")) {
+                    if (!allLabels2.contains(label)) {
                         createOneDimensionalAutomaton(s, true, product, a1, combinedStates, fromId, label);
                         warningNeeded = true;
                     }
@@ -178,7 +177,7 @@ public class CartesianProductAction extends AutomatonAction {
                 for (Transition t : a2.getTransitionsFromState(s2)) {
                     String label = ((FSATransition) t).getLabel();
                     State s = t.getToState();
-                    if (!allLabels1.contains(label) || label.equals("")) {
+                    if (!allLabels1.contains(label)) {
                         createOneDimensionalAutomaton(s, false, product, a2, combinedStates, fromId, label);
                         warningNeeded = true;
                     }
