@@ -163,7 +163,6 @@ public class CartesianProductAction extends AutomatonAction {
                 }
 
                 /* add all one dimensional states/transitions that are needed */
-                warningNeeded = true;
 
                 /* automaton 1 x null */
                 for (Transition t : a1.getTransitionsFromState(s1)) {
@@ -171,6 +170,7 @@ public class CartesianProductAction extends AutomatonAction {
                     State s = t.getToState();
                     if (!allLabels2.contains(label) || label.equals("")) {
                         createOneDimensionalAutomaton(s, true, product, a1, combinedStates, fromId, label);
+                        warningNeeded = true;
                     }
                 }
 
@@ -180,6 +180,7 @@ public class CartesianProductAction extends AutomatonAction {
                     State s = t.getToState();
                     if (!allLabels1.contains(label) || label.equals("")) {
                         createOneDimensionalAutomaton(s, false, product, a2, combinedStates, fromId, label);
+                        warningNeeded = true;
                     }
                 }
             }
