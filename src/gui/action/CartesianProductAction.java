@@ -142,7 +142,7 @@ public class CartesianProductAction extends AutomatonAction {
                     for (Transition t2 : a2.getTransitionsFromState(s2)) {
                         /* this combination of transitions represents one transition in the product FSA */
                         String label2 = ((FSATransition) t2).getLabel();
-                        /* make sure these transitions have the same label or one is lambda*/
+                        /* make sure these transitions have the same label or one is lambda */
                         if (label1.equals(label2) ) {
                             String toId = getProductId(t1.getToState(), t2.getToState());
                             Transition productTransition = new FSATransition(combinedStates.get(fromId), combinedStates.get(toId), label1);
@@ -255,12 +255,12 @@ public class CartesianProductAction extends AutomatonAction {
         String firstId = firstDim ? firstState.getID() + "x" : "x" + firstState.getID();
         combinedAutomaton.addTransition(new FSATransition(allStates.get(fromId), allStates.get(firstId), fromLabel));
 
-        /* create transitions with BFS again*/
+        /* create transitions with BFS again */
         HashSet<State> visited = new HashSet<>();
         queue.add(firstState);
         while (queue.size() > 0) {
             State curr = queue.remove();
-            String stateId = firstDim ? firstState.getID() + "x" : "x" + firstState.getID();
+            String stateId = firstDim ? curr.getID() + "x" : "x" + curr.getID();
             State fromState = allStates.get(stateId);
 
             for (Transition t : subAutomaton.getTransitionsFromState(curr)) {
